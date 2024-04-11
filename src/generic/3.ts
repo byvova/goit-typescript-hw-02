@@ -1,10 +1,21 @@
 /*
-  У вас є функція merge, яка поєднує два об'єкти. 
-  Використовуйте generics, щоб вказати, що ці об'єкти можуть бути будь-якого типу.
+  Використовуйте generics та інтерфейси, щоб виправити помилку в наступних класах:
 */
-
-function merge (objA, objB) {
-  return Object.assign(objA, objB);
+interface IT {
+  title: string;
 }
 
-export {}
+class Component <T> {
+  constructor (public props:T) {}
+}
+
+class Page extends Component <IT>{
+  pageInfo () {
+    console.log(this.props.title);
+  }
+}
+
+const a = new Page({ title: 'Sea' });
+a.pageInfo();
+
+export {};
